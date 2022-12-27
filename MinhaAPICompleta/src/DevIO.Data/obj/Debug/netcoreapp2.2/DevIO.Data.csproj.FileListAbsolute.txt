@@ -1,0 +1,13 @@
+D:\DevIO_CURSO\Projeto_API\MinhaAPICompleta\src\DevIO.Data\bin\Debug\netcoreapp2.2\DevIO.Data.deps.json
+D:\DevIO_CURSO\Projeto_API\MinhaAPICompleta\src\DevIO.Data\bin\Debug\netcoreapp2.2\DevIO.Data.dll
+D:\DevIO_CURSO\Projeto_API\MinhaAPICompleta\src\DevIO.Data\bin\Debug\netcoreapp2.2\DevIO.Data.pdb
+D:\DevIO_CURSO\Projeto_API\MinhaAPICompleta\src\DevIO.Data\bin\Debug\netcoreapp2.2\DevIO.Business.dll
+D:\DevIO_CURSO\Projeto_API\MinhaAPICompleta\src\DevIO.Data\bin\Debug\netcoreapp2.2\DevIO.Business.pdb
+D:\DevIO_CURSO\Projeto_API\MinhaAPICompleta\src\DevIO.Data\obj\Debug\netcoreapp2.2\DevIO.Data.csproj.AssemblyReference.cache
+D:\DevIO_CURSO\Projeto_API\MinhaAPICompleta\src\DevIO.Data\obj\Debug\netcoreapp2.2\DevIO.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\DevIO_CURSO\Projeto_API\MinhaAPICompleta\src\DevIO.Data\obj\Debug\netcoreapp2.2\DevIO.Data.AssemblyInfoInputs.cache
+D:\DevIO_CURSO\Projeto_API\MinhaAPICompleta\src\DevIO.Data\obj\Debug\netcoreapp2.2\DevIO.Data.AssemblyInfo.cs
+D:\DevIO_CURSO\Projeto_API\MinhaAPICompleta\src\DevIO.Data\obj\Debug\netcoreapp2.2\DevIO.Data.csproj.CoreCompileInputs.cache
+D:\DevIO_CURSO\Projeto_API\MinhaAPICompleta\src\DevIO.Data\obj\Debug\netcoreapp2.2\DevIO.Data.csproj.CopyComplete
+D:\DevIO_CURSO\Projeto_API\MinhaAPICompleta\src\DevIO.Data\obj\Debug\netcoreapp2.2\DevIO.Data.dll
+D:\DevIO_CURSO\Projeto_API\MinhaAPICompleta\src\DevIO.Data\obj\Debug\netcoreapp2.2\DevIO.Data.pdb
