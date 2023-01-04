@@ -14,13 +14,19 @@ namespace DevIO.Api.Controllers
     {
 
         private readonly IFornecedorRepository _fornecedorRepository;
+        private readonly IEnderecoRepository _enderecoRepository;
         private readonly IFornecedorService _fornecedorService;
         private readonly IMapper _mapper;
-        public FornecedoresController(IFornecedorRepository fornecedorRepository, IMapper mapper, IFornecedorService fornecedorService)
+        public FornecedoresController(IFornecedorRepository fornecedorRepository,
+                                        IMapper mapper,
+                                        IFornecedorService fornecedorService,
+                                        INotificador notificador, 
+                                        IEnderecoRepository enderecoRepository ) : base(notificador)
         {
             _fornecedorRepository = fornecedorRepository;
             _mapper = mapper;
-            _fornecedorService = fornecedorService; 
+            _fornecedorService = fornecedorService;
+            _enderecoRepository = enderecoRepository;
         }
 
         [HttpGet]
@@ -40,19 +46,14 @@ namespace DevIO.Api.Controllers
             return fornecedor;
         }
 
-
         [HttpPost]
         public async Task<ActionResult<FornecedorViewModel>> Adicionar(FornecedorViewModel fornecedorViewModel)
         {
-            if (!ModelState.IsValid) return BadRequest();
-            
-            var fornecedor = _mapper.Map<Fornecedor>(fornecedorViewModel);
-            
-            var result = await _fornecedorService.Adicionar(fornecedor);
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
+               
+            await _fornecedorService.Adicionar(_mapper.Map<Fornecedor>(fornecedorViewModel));
 
-            if (!result) return BadRequest();
-
-            return Ok(fornecedor);
+            return CustomResponse(fornecedorViewModel);
         
         }
 
@@ -61,29 +62,42 @@ namespace DevIO.Api.Controllers
         {
             if (id != fornecedorViewModel.Id) return BadRequest();
             
-            if (!ModelState.IsValid) return BadRequest();
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            var fornecedor = _mapper.Map<Fornecedor>(fornecedorViewModel);
+            await _fornecedorService.Atualizar(_mapper.Map<Fornecedor>(fornecedorViewModel));
 
-            var result = await _fornecedorService.Atualizar(fornecedor);
-
-            if (!result) return BadRequest();
-
-            return Ok(fornecedor);
+            return CustomResponse(fornecedorViewModel);
         }
 
         [HttpDelete("{id:guid}")]
         public async Task<ActionResult<FornecedorViewModel>> Excluir(Guid id)
         {
-            var fornecedor = await ObterFornecedorEndereco(id);
+            var fornecedorViewModel = await ObterFornecedorEndereco(id);
 
-            if (fornecedor == null) return NotFound();
+            if (fornecedorViewModel == null) return NotFound();
 
-            var result = await _fornecedorService.Remover(id);
+            await _fornecedorService.Remover(id);
 
-            if (!result) return BadRequest();
+            return CustomResponse(fornecedorViewModel);
+        }
 
-            return Ok(fornecedor);
+        [HttpGet("obter-endereco/{id:guid}")]
+        public async Task<EnderecoViewModel> ObterEnderecoPorId(Guid id)
+        {
+            return  _mapper.Map<EnderecoViewModel>(await _enderecoRepository.ObterPorId(id));
+        }
+
+        [HttpPut("atualizar-endereco/{id:guid}")]
+        public async Task<IActionResult> AtualizarEndereco(Guid id, EnderecoViewModel enderecoViewModel)
+        {
+            if (id != enderecoViewModel.Id) return BadRequest();
+
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
+
+            var endereco = _mapper.Map<Endereco>(enderecoViewModel);
+            await _fornecedorService.AtualizarEndereco(endereco);
+
+            return CustomResponse(enderecoViewModel);
         }
 
         public async Task<FornecedorViewModel> ObterFornecedorProdutosEndereco(Guid id)
