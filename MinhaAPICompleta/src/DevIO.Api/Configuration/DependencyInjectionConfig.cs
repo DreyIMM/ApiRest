@@ -24,6 +24,7 @@ namespace DevIO.Api.Configuration
             services.AddScoped<IFornecedorService, FornecedorService>();
             services.AddScoped<IProdutoService, ProdutoService>();
 
+
             return services;
         }
 
