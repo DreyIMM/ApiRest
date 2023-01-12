@@ -16,7 +16,12 @@ namespace DevIO.Api.Configuration
             //Criando um D-Para
             CreateMap<Fornecedor, FornecedorViewModel>().ReverseMap();
             CreateMap<Endereco, EnderecoViewModel>().ReverseMap();
-            CreateMap<Produto, ProdutoViewModel>().ReverseMap();
+
+            CreateMap<ProdutoViewModel,Produto >().ReverseMap();
+
+            CreateMap<Produto, ProdutoViewModel>()
+                .ForMember(dest => dest.NomeFornecedor, option => option.MapFrom(src => src.Fornecedor.Nome));
+
         }
 
 
