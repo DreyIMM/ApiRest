@@ -7,3 +7,4 @@ D:\DevIO_CURSO\Projeto_API\MinhaAPICompleta\src\DevIO.Business\obj\Debug\netcore
 D:\DevIO_CURSO\Projeto_API\MinhaAPICompleta\src\DevIO.Business\obj\Debug\netcoreapp2.2\DevIO.Business.csproj.CoreCompileInputs.cache
 D:\DevIO_CURSO\Projeto_API\MinhaAPICompleta\src\DevIO.Business\obj\Debug\netcoreapp2.2\DevIO.Business.dll
 D:\DevIO_CURSO\Projeto_API\MinhaAPICompleta\src\DevIO.Business\obj\Debug\netcoreapp2.2\DevIO.Business.pdb
+D:\DevIO_CURSO\Projeto_API\MinhaAPICompleta\src\DevIO.Business\obj\Debug\netcoreapp2.2\DevIO.Business.csproj.AssemblyReference.cache

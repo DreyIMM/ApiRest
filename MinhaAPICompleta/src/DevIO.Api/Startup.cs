@@ -39,25 +39,7 @@ namespace DevIO.Api
             //Configurando o AutoMapper
             services.AddAutoMapper(typeof(Startup));
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
-            //faço isso para que possa personalizar os erros 
-            services.Configure<ApiBehaviorOptions>(options =>
-            {
-                options.SuppressModelStateInvalidFilter = true;
-            });
-
-            //Para corrigir o erro do CROS Origin
-
-            services.AddCors(options =>
-            {
-                options.AddPolicy("Development",
-                    builder => builder.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowCredentials()
-                    );
-            });
+            services.WebApiConfig();
 
             services.ResolveDependencies();
         }
@@ -75,9 +57,8 @@ namespace DevIO.Api
                 app.UseHsts();
             }
 
-            app.UseCors("Development");
-            app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UserMvcConfiguration();
+
         }
     }
 }
