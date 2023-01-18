@@ -83,10 +83,13 @@ namespace DevIO.Api.Controllers
         }
 
         [HttpPut("{id:guid}")]
-
         public async Task<IActionResult> Atualizar(Guid id, ProdutoViewModel produtoViewModel)
         {
-            if (id != produtoViewModel.Id) return NotFound();
+            if (id != produtoViewModel.Id)
+            {
+                NotificarError("Os ids são difernetes");
+                return CustomResponse();
+            }
 
             var produtoAtualizacao = await ObterProduto(id);
             produtoViewModel.Imagem = produtoAtualizacao.Imagem;
@@ -110,6 +113,8 @@ namespace DevIO.Api.Controllers
             produtoAtualizacao.Ativo = produtoAtualizacao.Ativo;
 
             await _produtoService.Atualizar(_mapper.Map<Produto>(produtoAtualizacao));
+
+            return Ok(produtoAtualizacao);
         }
 
 
