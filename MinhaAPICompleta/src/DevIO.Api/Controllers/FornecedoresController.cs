@@ -39,6 +39,7 @@ namespace DevIO.Api.Controllers
             return fornecedor;
         }
 
+        [AllowAnonymous]
         [HttpGet("{id:guid}")]
         public async Task <ActionResult<FornecedorViewModel>> ObterPorId(Guid id)
         {
