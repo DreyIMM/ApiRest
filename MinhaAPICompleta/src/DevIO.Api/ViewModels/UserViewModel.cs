@@ -33,5 +33,27 @@ namespace DevIO.Api.ViewModels
 
     }
 
+    public class userTokenViewModel
+    {
+        public string Id { get; set; }  
+        public string Email { get; set; }   
+        public IEnumerable<ClaimViewModel> claims { get; set; }
+    }
+
+
+    public class LoginResponseViewModel
+    {
+        public string AcessToken { get; set; }  
+        public double ExpiresIn { get; set; }
+        public userTokenViewModel User { get; set; }
+
+    }
+
+    public class ClaimViewModel
+    {
+        public string Value { get; set; }   
+        public string Type { get; set; }   
+    }
+
 
 }
