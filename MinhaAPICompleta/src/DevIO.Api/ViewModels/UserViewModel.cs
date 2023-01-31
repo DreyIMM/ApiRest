@@ -37,6 +37,7 @@ namespace DevIO.Api.ViewModels
     {
         public string Id { get; set; }  
         public string Email { get; set; }   
+        public string Name { get; set; }
         public IEnumerable<ClaimViewModel> claims { get; set; }
     }
 
